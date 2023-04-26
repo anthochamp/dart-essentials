@@ -880,6 +880,8 @@ const kDiacriticsMap = {
 extension DiacriticsStringExtension on String {
   String removeDiacritics() {
     return replaceAllMapped(
-        r'[^\u0000-\u007E]', (match) => kDiacriticsMap[match[0]!] ?? match[0]!);
+      r'[^\u0000-\u007E]',
+      (match) => kDiacriticsMap[match[0]!] ?? match[0]!,
+    );
   }
 }

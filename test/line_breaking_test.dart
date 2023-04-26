@@ -1,4 +1,4 @@
-import 'package:dart_essentials/src/extensions/runes/line_breaking_string_extension.dart';
+import 'package:anthochamp_dart_essentials/src/extensions/runes/line_breaking_string_extension.dart';
 import 'package:test/test.dart';
 
 

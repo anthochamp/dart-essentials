@@ -1,4 +1,4 @@
-import 'package:dart_essentials/src/extensions/runes/truncate_extension.dart';
+import 'package:anthochamp_dart_essentials/src/extensions/runes/truncate_extension.dart';
 
 class InspectOptions {
   final int maxListSetLength;

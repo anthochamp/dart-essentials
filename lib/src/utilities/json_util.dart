@@ -1,14 +1,15 @@
-import 'package:dart_essentials/src/types/json.dart';
+import 'package:anthochamp_dart_essentials/src/types/json.dart';
 
 class JsonUtil {
-  JsonCollection castAsCollection(JsonValue value) {
+  static JsonCollection castAsCollection(JsonValue value) {
     // pass through an json array to help dart cast mechanism
     return (value as JsonArray)
         .map<JsonObject>((e) => e as JsonObject)
         .toList();
   }
 
-  JsonValue get(JsonObject object, dynamic path) {
+  // ignore: no-object-declaration
+  static JsonValue get(JsonObject object, dynamic path) {
     Iterable<dynamic> list;
     if (path is String || path is int) {
       list = [path];

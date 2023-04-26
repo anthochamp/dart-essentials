@@ -3,8 +3,8 @@ import 'dart:collection';
 class DataHistorySink<T> extends Sink<T> {
   DataHistorySink([int? initialWindowSize]) : _windowSize = initialWindowSize;
 
-  int? _windowSize;
   final _buffer = Queue<T>();
+  int? _windowSize;
   bool _closed = false;
 
   Iterable<T> get buffer => _buffer;
