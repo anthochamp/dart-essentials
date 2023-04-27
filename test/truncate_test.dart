@@ -1,5 +1,6 @@
-import 'package:anthochamp_dart_essentials/src/extensions/runes/truncate_extension.dart';
 import 'package:test/test.dart';
+
+import 'package:anthochamp_dart_essentials/src/extensions/runes/truncate_extension.dart';
 
 void main() {
   const datasets = [
@@ -235,20 +236,22 @@ void main() {
 
   for (final dataset in datasets) {
     group(
-        'breakWord=${dataset.first}, position=${(dataset[1] as TruncatePosition).name}, indicator="${dataset[2]}" value="${dataset[3]}"',
-        () {
-      for (final subset in dataset[4] as List) {
-        test('maxLength=${subset[0]}', () {
-          expect(
+      'breakWord=${dataset.first}, position=${(dataset[1] as TruncatePosition).name}, indicator="${dataset[2]}" value="${dataset[3]}"',
+      () {
+        for (final subset in dataset[4] as List) {
+          test('maxLength=${subset[0]}', () {
+            expect(
               (dataset[3] as String).truncate(
                 breakWord: dataset.first as bool,
                 position: dataset[1] as TruncatePosition,
                 truncateIndicator: dataset[2] as String,
                 maxLength: subset[0],
               ),
-              equals(subset[1]),);
-        });
-      }
-    },);
+              equals(subset[1]),
+            );
+          });
+        }
+      },
+    );
   }
 }
