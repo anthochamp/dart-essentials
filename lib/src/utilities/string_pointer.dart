@@ -1,5 +1,11 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:math';
 
+/// A class that keep an offset attached to a string giving
+/// a C-string-pointer like object.
 class StringPointer {
   final String string;
 

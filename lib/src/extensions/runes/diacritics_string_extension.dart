@@ -1,6 +1,10 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 // ignore_for_file: avoid-non-ascii-symbols
 
-const kDiacriticsMap = {
+const _kDiacriticsMap = <String, String>{
   'A': 'A',
   'Ⓐ': 'A',
   'Ａ': 'A',
@@ -878,10 +882,14 @@ const kDiacriticsMap = {
 };
 
 extension DiacriticsStringExtension on String {
+  /// Remove all the diacritics from a string
   String removeDiacritics() {
-    return replaceAllMapped(
-      r'[^\u0000-\u007E]',
-      (match) => kDiacriticsMap[match[0]!] ?? match[0]!,
-    );
+    String result = this;
+
+    for (final diacritic in _kDiacriticsMap.entries) {
+      result.replaceAll(RegExp(diacritic.key, unicode: true), diacritic.value);
+    }
+
+    return result;
   }
 }

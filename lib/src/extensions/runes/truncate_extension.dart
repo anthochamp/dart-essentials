@@ -1,3 +1,7 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 // ignore_for_file: avoid-non-ascii-symbols, avoid-substring
 
 import 'package:characters/characters.dart';
@@ -9,6 +13,7 @@ enum TruncatePosition {
 }
 
 extension TruncateStringExtension on String {
+  /// Truncate string
   String truncate({
     required int maxLength,
     bool breakWord = true,
@@ -23,13 +28,15 @@ extension TruncateStringExtension on String {
       return this;
     }
 
+    final wordSeparatorRegExp = RegExp(wordSeparator.toString(), unicode: true);
+
     switch (position) {
       case TruncatePosition.start:
         if (breakWord) {
           return truncateIndicator +
               characters.getRange(characters.length - maxLength).string;
         } else {
-          final separators = RegExp('($wordSeparator)').allMatches(this);
+          final separators = wordSeparatorRegExp.allMatches(this);
           String lastEnd = '';
           for (final separator in separators.toList().reversed) {
             final end =
@@ -56,8 +63,7 @@ extension TruncateStringExtension on String {
                     )
                     .string;
           } else {
-            final separators =
-                RegExp('($wordSeparator)').allMatches(this).toList();
+            final separators = wordSeparatorRegExp.allMatches(this).toList();
             String lastStart = '';
             String lastEnd = '';
 
@@ -97,7 +103,7 @@ extension TruncateStringExtension on String {
         if (breakWord) {
           return characters.getRange(0, maxLength).string + truncateIndicator;
         } else {
-          final separators = RegExp('($wordSeparator)').allMatches(this);
+          final separators = wordSeparatorRegExp.allMatches(this);
           String lastStart = '';
           for (final separator in separators) {
             final start = substring(

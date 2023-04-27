@@ -1,6 +1,6 @@
-name: anthochamp_dart_essentials
-publish_to: 'none'
-version: 1.0.0
+name: ac_dart_essentials
+description: Dart Essentials
+version: 0.1.0
 repository: https://github.com/anthochamp/dart-essentials
 
 environment:

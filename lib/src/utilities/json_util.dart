@@ -1,6 +1,13 @@
-import 'package:anthochamp_dart_essentials/src/types/json.dart';
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import '../types/json.dart';
 
 class JsonUtil {
+  /// Cast a `JsonValue` to a `JsonCollection`
+  ///
+  /// It'll throw if `value` is not a `JsonArray`, or if array's elements are not `JsonObject`.
   static JsonCollection castAsCollection(JsonValue value) {
     // pass through an json array to help dart cast mechanism
     return (value as JsonArray)
@@ -8,6 +15,7 @@ class JsonUtil {
         .toList();
   }
 
+  /// `lodash.get`-like method
   // ignore: no-object-declaration
   static JsonValue get(JsonObject object, dynamic path) {
     Iterable<dynamic> list;

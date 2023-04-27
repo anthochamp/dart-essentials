@@ -1,5 +1,10 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:collection';
 
+/// Sink that keeps a configurable sliding-buffer of data in memory.
 class DataHistorySink<T> extends Sink<T> {
   DataHistorySink([int? initialWindowSize]) : _windowSize = initialWindowSize;
 

@@ -1,11 +1,17 @@
+// Copyright 2023, Anthony Champagne. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:collection';
 import 'dart:math';
 
 extension LineBreakingStringExtension on String {
-  // based on :
-  // https://xxyxyz.org/line-breaking/
-  // with separation argument addition from :
-  // https://cs.stackexchange.com/questions/123423/line-breaking-algorithm-minimum-raggedness-where-spaces-can-have-width-differe
+  /// Break line at word separation using a minimum raggedness algorithm.
+  ///
+  /// Based on "Divide & Conquer" algorithm from https://xxyxyz.org/line-breaking/ with
+  /// `wordSeparation` optional argument from https://cs.stackexchange.com/questions/123423/line-breaking-algorithm-minimum-raggedness-where-spaces-can-have-width-differe
+  ///
+  /// See: https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap#Minimum_raggedness
   Iterable<String> breakLine(int maxLineLength, [String wordSeparation = ' ']) {
     if (length <= maxLineLength.toInt()) {
       return [this];
