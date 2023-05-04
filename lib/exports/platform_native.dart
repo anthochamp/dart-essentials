@@ -3,4 +3,7 @@
 // found in the LICENSE file.
 
 export 'platform_independant.dart';
+
+export '../src/exceptions/http_status_exception.dart';
+
 export '../src/utilities/isolate.dart';

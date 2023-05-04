@@ -5,7 +5,6 @@
 export '../src/async/cancelable_timer/cancelable_timer.dart';
 
 export '../src/exceptions/element_not_found_exception.dart';
-export '../src/exceptions/http_status_exception.dart';
 export '../src/exceptions/invalid_data_exception.dart';
 
 export '../src/extensions/list/case_list_string_extension.dart';
