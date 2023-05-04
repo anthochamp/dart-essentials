@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:ac_dart_essentials/src/extensions/runes/truncate_extension.dart';
+import 'package:ac_dart_essentials/ac_dart_essentials.dart';
 
 void main() {
   const datasets = [
