@@ -14,6 +14,7 @@ export 'src/extensions/runes/line_breaking_string_extension.dart';
 export 'src/extensions/runes/truncate_extension.dart';
 export 'src/extensions/string/ansi_string_extension.dart';
 export 'src/extensions/string/case_string_extension.dart';
+export 'src/extensions/string/lines_string_extension.dart';
 export 'src/extensions/string/pattern_trim_string_extension.dart';
 export 'src/extensions/inspect_extensions.dart';
 export 'src/extensions/pattern_extensions.dart';

@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import '../extensions/runes/truncate_extension.dart';
+import '../extensions/string/lines_string_extension.dart';
 
 class InspectOptions {
   final int maxListSetLength;
@@ -37,10 +38,6 @@ class Inspect {
   /// Node.js's `inspect`-like method
   String inspect(dynamic value) => _inspectValue(value);
 
-  String _prependLines(String value, String prepend) {
-    return '$prepend${value.split('\n').join('\n$prepend')}';
-  }
-
   String _inspectValue(dynamic value, [int deepLevel = 0]) {
     String result;
 
@@ -65,7 +62,7 @@ class Inspect {
       if (options.preferCompact && !hasCR) {
         result = enclose[0] + list.join(', ') + enclose[1];
       } else {
-        result = _prependLines('\n${list.join('\n')}', options.indent);
+        result = '\n${list.join('\n')}'.prependLines(options.indent);
       }
     } else if (value is Map) {
       final list = value.entries
@@ -86,7 +83,7 @@ class Inspect {
       if (options.preferCompact && !hasCR) {
         result = '{${list.join(', ')}}';
       } else {
-        result = _prependLines('\n${list.join('\n')}', options.indent);
+        result = '\n${list.join('\n')}'.prependLines(options.indent);
       }
     } else {
       result = value.toString();
