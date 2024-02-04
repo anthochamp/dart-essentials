@@ -1,6 +1,6 @@
-// Copyright 2023, Anthony Champagne. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+//
+// SPDX-License-Identifier: BSD-3-Clause
 
 extension PatternExtensions on Pattern {
   /// Match entire pattern against the provided `string`, optionally with `unicode` matching
