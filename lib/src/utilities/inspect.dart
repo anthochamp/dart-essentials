@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -32,8 +32,7 @@ class InspectOptions {
 class Inspect {
   final InspectOptions options;
 
-  Inspect([InspectOptions? options])
-      : options = options ?? const InspectOptions();
+  const Inspect([this.options = const InspectOptions()]);
 
   /// Node.js's `inspect`-like method
   String inspect(dynamic value) => _inspectValue(value);
@@ -52,7 +51,9 @@ class Inspect {
           .map((e) => _inspectValue(e, deepLevel + 1))
           .toList();
 
-      if (value.length > options.maxListSetLength) {
+      // Use take(n+1).length > n to avoid O(n) length on lazy Iterables.
+      if (value.take(options.maxListSetLength + 1).length >
+          options.maxListSetLength) {
         // ignore: avoid-non-ascii-symbols
         list.add('…');
       }

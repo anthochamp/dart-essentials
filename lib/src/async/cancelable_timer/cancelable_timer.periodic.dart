@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -50,6 +50,10 @@ class CancelableTimerPeriodic implements CancelableTimer {
         _next();
       }));
     } else {
+      // Schedule the next tick immediately (without waiting for the operation
+      // to complete), but still clear _operation once this one finishes so
+      // that future ticks can fire the callback again.
+      unawaited(operation.value.whenComplete(() => _operation = null));
       _next();
     }
   }

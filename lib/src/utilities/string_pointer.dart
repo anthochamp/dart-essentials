@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -10,6 +10,8 @@ class StringPointer {
   final String string;
 
   StringPointer(this.string);
+
+  StringPointer._withOffset(this.string, this._offset);
 
   String? _value;
   int _offset = 0;
@@ -33,15 +35,11 @@ class StringPointer {
     return _value!;
   }
 
-  StringPointer operator +(int count) {
-    offset += count;
+  /// Returns a new [StringPointer] pointing [count] positions ahead.
+  StringPointer operator +(int count) =>
+      StringPointer._withOffset(string, _offset + count);
 
-    return this;
-  }
-
-  StringPointer operator -(int count) {
-    offset -= count;
-
-    return this;
-  }
+  /// Returns a new [StringPointer] pointing [count] positions behind.
+  StringPointer operator -(int count) =>
+      StringPointer._withOffset(string, _offset - count);
 }

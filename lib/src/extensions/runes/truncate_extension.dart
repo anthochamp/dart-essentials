@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -22,7 +22,9 @@ extension TruncateStringExtension on String {
     Pattern wordSeparator = r'\s',
     bool keepWordSeparator = false,
   }) {
-    assert(!maxLength.isNegative);
+    if (maxLength.isNegative) {
+      throw ArgumentError.value(maxLength, 'maxLength', 'must not be negative');
+    }
 
     if (characters.length <= maxLength) {
       return this;

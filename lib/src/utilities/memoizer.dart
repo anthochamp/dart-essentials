@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -7,7 +7,15 @@ class Memoizer<T> {
   late T _value;
   bool _hasRun = false;
 
-  T get value => _value;
+  /// The result computed by [runOnce].
+  ///
+  /// Accessing [value] before calling [runOnce] throws a [StateError].
+  T get value {
+    if (!_hasRun) {
+      throw StateError('Memoizer.value accessed before runOnce was called');
+    }
+    return _value;
+  }
 
   bool get hasRun => _hasRun;
 

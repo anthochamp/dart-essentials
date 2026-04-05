@@ -1,11 +1,11 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'dart:collection';
 
 /// Sink that keeps a configurable sliding-buffer of data in memory.
-class DataHistorySink<T> extends Sink<T> {
+class DataHistorySink<T> implements Sink<T> {
   DataHistorySink([int? initialWindowSize]) : _windowSize = initialWindowSize;
 
   final _buffer = Queue<T>();
@@ -28,7 +28,7 @@ class DataHistorySink<T> extends Sink<T> {
   void add(T data) {
     if (_closed) throw StateError('Sink closed');
 
-    while (_windowSize != null && _buffer.length > _windowSize!) {
+    while (_windowSize != null && _buffer.length >= _windowSize!) {
       _buffer.removeFirst();
     }
 

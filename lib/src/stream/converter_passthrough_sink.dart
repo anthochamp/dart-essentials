@@ -1,11 +1,11 @@
-// SPDX-FileCopyrightText: © 2023 - 2024 Anthony Champagne <dev@anthonychampagne.fr>
+// SPDX-FileCopyrightText: © 2023 - 2026 Anthony Champagne <dev@anthonychampagne.fr>
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'dart:convert';
 
 class ConverterPassthroughSink<S, T, C extends Converter<S, T>>
-    extends Sink<S> {
+    implements Sink<S> {
   ConverterPassthroughSink(this._converter, this._output);
 
   final Sink<T> _output;
